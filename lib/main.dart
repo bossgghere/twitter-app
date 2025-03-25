@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twitter_app/firebase_options.dart';
 import 'package:twitter_app/services/auth/auth_gate.dart';
-// import 'package:twitter_app/pages/home_page.dart';
-// import 'package:twitter_app/pages/login_page.dart';
-// import 'package:twitter_app/pages/register_page.dart';
-import 'package:twitter_app/services/auth/login_or_register.dart';
+import 'package:twitter_app/services/database/database_provider.dart';
+
+
 import 'package:twitter_app/themes/theme_provider.dart';
 
 void main() async {
@@ -14,10 +13,12 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
-      child: MyApp(),
-    ),
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create:(context) => ThemeProvider(),),
+      ChangeNotifierProvider(create:(context) => DatabaseProvider(),),
+    ]
+    ,child: MyApp(),
+    )
   );
 }
 

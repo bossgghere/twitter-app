@@ -38,6 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
           name: nameController.text,
           email: emailController.text,
         );
+
       } catch (e) {
         if (mounted) hideLoadingCircle(context);
 
@@ -51,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
     } else {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(title: Text("Passeords do no match")),
+        builder: (context) => AlertDialog(title: Text("Passeords do no match ...change the password")),
       );
     }
   }

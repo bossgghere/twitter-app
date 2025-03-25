@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twitter_app/components/my_drawer_tile.dart';
+import 'package:twitter_app/pages/profile_page.dart';
 import 'package:twitter_app/pages/settings_page.dart';
 import 'package:twitter_app/services/auth/auth_services.dart';
 
@@ -48,6 +49,20 @@ class MyDrawer extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => SettingsPage()),
                       ),
                     },
+              ),
+
+              //
+              MyDrawerTile(
+                title: "P R O F I L E",
+                icon: Icons.person,
+                onTap: () {
+                  Navigator.pop(context);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage(uid: auth.getCurrentUid(),)),
+                  );
+                },
               ),
               Spacer(),
               MyDrawerTile(
